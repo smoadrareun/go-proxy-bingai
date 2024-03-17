@@ -1,15 +1,18 @@
 name: Build Go-Proxy-BingAI Nightly
 on:
   schedule:
-    - cron: '0 18 * * *'
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 jobs:
   build:
     name: build
     runs-on: ubuntu-latest
+    if: github.repository == 'Harry-zklcdc/go-proxy-bingai'
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: dev
 
       - name: Set up Go
         uses: actions/setup-go@v4
@@ -101,6 +104,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: dev
 
       - name: Setup timezone
         uses: zcong1993/setup-timezone@master
@@ -153,6 +158,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: dev
 
       - name: Setup timezone
         uses: zcong1993/setup-timezone@master
